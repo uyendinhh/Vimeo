@@ -1,8 +1,11 @@
 
 html, body {
-    margin: 0;
-    height: 100%;
+  margin: 0;
+  height: 100%;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", "sans-serif";
+  min-width: 30%;
 }
+
 .left-panel {
   padding-right: 10px;
   flex-basis: 40%;
@@ -13,8 +16,14 @@ html, body {
   flex-basis: 40%;
 }
 
-#top-box {
-  background-color: white;
+.left-panel-carousel  {
+  padding-right: 10px;
+  flex-basis: 25%;
+}
+
+.right-panel-carousel {
+  padding-left: 10px;
+  flex-basis: 45%;
 }
 
 #bottom-box {
@@ -30,11 +39,20 @@ html, body {
     justify-content: center;
     align-items: center;
   }
+
+  .row-carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    top: -240px;
+    height: 0px;
+  }
 }
 
 @media(max-width:850px) {
   .row {
-    z-index: 10;
     min-height: 450px;
     display: flex;
     flex-direction: column;
@@ -43,40 +61,60 @@ html, body {
     text-align: center;
   }
 
-  .left-panel {
+  .left-panel:not(#middle-row) {
     order: 2;
+    min-width: 400px;
+
   }
   
   .right-panel {
     order: 1;
   }
+
+
+  .row-carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    top: -200px;
+    height: 0px;
+  }
+  .arrow {
+    visibility: hidden;
+  }
+  
 }
 
-.main-container {
-  width: 100%;
-}
 
-.movie-picker {
-  /* The image used */
-  background-image: "https://i.vimeocdn.com/video/438890412_640x240.jpg?r=pad";
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(10px);
-  z-index: -1;
-  transition: all .6s;  
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
-  height: 100%;
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .carousel-container {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+
+.bg-img {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  z-index: 1;
+  opacity: 0.8;
+  filter: blur(40px);
+  transform: scale(1.1);
+}
+
+.arrow {
+  opacity: 0.6;
+  padding: 8px;
+}
+.arrow :hover {
+  opacity: 1;
+  color: rgb(14, 3, 3);
 }

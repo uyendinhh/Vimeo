@@ -2,17 +2,13 @@ let Vimeo = require('vimeo').Vimeo;
 let config = require('./config.json')
 let client = new Vimeo("e6435fcacab2bed5ff74ab5f155a0076504c5b76", "", "");
 
-
 const makeRequest = (lib, callback) => {
   lib.request({
     method: 'GET',
-    path: '/videos',
+    path: '/ondemand/genres/animation/pages',
     query: {
-      page: 1,
-      per_page: 10,
-      query: 'vimeo staff',
-      sort: 'relevant',
-      direction: 'asc'
+      page: 2,
+      per_page: 20,
     }
   }, function (error, res, status_code, headers) {
     if (error) {
