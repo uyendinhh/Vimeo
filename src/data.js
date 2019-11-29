@@ -1,17 +1,44 @@
 let Vimeo = require('vimeo').Vimeo;
-let client = new Vimeo("e6435fcacab2bed5ff74ab5f155a0076504c5b76", "r/cf9flWotEeyaMYpEEKCrTgwxN+sMKsXuUvRQk0zCKqA06gDK3wst/sFhXZYAtvaObGCmq2X5/zAG104Gex1TdVGPm7EmhKJk+aOqgUMDHTcvabvm9PBZmsC/DCPi68", "e959860c90c70fe3c43fd7eef5afaadc");
+let config = require('./config.json')
+let client = new Vimeo("e6435fcacab2bed5ff74ab5f155a0076504c5b76", "", "");
+
+
+const makeRequest = (lib, callback) => {
+  lib.request({
+    method: 'GET',
+    path: '/videos',
+    query: {
+      page: 1,
+      per_page: 10,
+      query: 'vimeo staff',
+      sort: 'relevant',
+      direction: 'asc'
+    }
+  }, function (error, res, status_code, headers) {
+    if (error) {
+      console.log(error);
+    } else {
+      return callback(res.data);
+    }
+  })
+}
 
 const getData = (callback) => {
-  client.request({
-      method: 'GET',
-      path: '/videos/235664764'
-    }, function (error, body, status_code, headers) {
-      if (error) {
-        console.log(error);
+  var lib = new Vimeo(config.client_id, config.client_secret);
+  if (config.access_token) {
+    lib.setAccessToken(config.access_token)
+    makeRequest(lib, callback)
+  } else {
+    lib.generateClientCredentials('public', function (err, response) {
+      if (err) {
+        throw err
       }
-      console.log(body);
-      return callback(body);
-  })
+  
+      // Assign the access token to the library
+      lib.setAccessToken(response.access_token)
+      makeRequest(lib, callback)
+    })
+  }
 }
 
 

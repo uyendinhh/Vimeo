@@ -17,7 +17,7 @@ html, body {
   background-color: white;
 }
 
-.bottom-box {
+#bottom-box {
   background: rgb(189,195,199);
   background: linear-gradient(0deg, rgba(189,195,199,1) 0%, rgba(81,94,108,1) 39%, rgba(44,62,80,1) 100%);
 }
@@ -34,6 +34,7 @@ html, body {
 
 @media(max-width:850px) {
   .row {
+    z-index: 10;
     min-height: 450px;
     display: flex;
     flex-direction: column;
@@ -53,4 +54,29 @@ html, body {
 
 .main-container {
   width: 100%;
+}
+
+.movie-picker {
+  /* The image used */
+  background-image: "https://i.vimeocdn.com/video/438890412_640x240.jpg?r=pad";
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+  transition: all .6s;  
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carousel-container {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
 }
