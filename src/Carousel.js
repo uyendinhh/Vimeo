@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import Button from '@material-ui/core/Button';
-import './App.css';
 
 const Carousel = ({
   imageLink,

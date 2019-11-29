@@ -1,6 +1,5 @@
 let Vimeo = require('vimeo').Vimeo;
 let config = require('./config.json')
-let client = new Vimeo("e6435fcacab2bed5ff74ab5f155a0076504c5b76", "", "");
 
 const makeRequest = (lib, callback) => {
   lib.request({

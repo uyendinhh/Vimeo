@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import getData from './data.js';
 import Carousel from './Carousel';
 
@@ -16,7 +15,6 @@ class App extends Component {
 
   componentDidMount(){
     getData((data) => {
-      console.log(data);
       this.setState({data})
     });
   }
